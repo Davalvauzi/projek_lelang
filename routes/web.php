@@ -29,13 +29,11 @@ route::get('user', [UserController::class, 'view']);
 // route login
 route::get('login', [LoginController::class, 'view'])->name('login')->middleware('guest');
 route::post('login', [LoginController::class, 'proses'])->name('login.proses')->middleware('guest');
+route::get('logout', [LoginController::class, 'logout'])->name('logout-petugas');
 
 // route register
 route::get('register', [RegisterController::class, 'view'])->name('register')->middleware(('guest'));
 route::post('register', [RegisterController::class, 'store'])->name('register-store')->middleware(('guest'));
-
-// route logout
-route::get('logout', [LoginController::class, 'logout'])->name('logout-petugas');
 
 // route login sesuai role
 route::get('/dashboard/admin', [Dashboard::class, 'admin'])->name('dashboard.admin')->middleware('auth', 'level:admin');
