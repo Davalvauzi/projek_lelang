@@ -22,7 +22,7 @@ class RegisterController extends Controller
             [
                 'name' => 'required|min:4|max:25',
                 'username' => 'required|unique:users,username',
-                'password' => 'required|min8',
+                'password' => 'required|min:8',
                 'telepon' => 'required|numeric',
             ],
             [

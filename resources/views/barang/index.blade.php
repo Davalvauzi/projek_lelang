@@ -1,19 +1,18 @@
 @extends('master')
 
 @section('judul')
-<h1>Data Kelas</h1>
+<h1>Data Barang</h1>
 @endsection
 
 @section('content')
 
-</style>
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Database Profile</h3>
+      <h3 class="card-title">Database Barang</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="example2" class="table table-bordered table-hover">
+      <table id="example2" class="table table-bordered table-hover" class="datatable">
         <thead>
         <tr>
           <th class="th1">NO</th>
@@ -32,7 +31,6 @@
                 <td >{{ $barang->tanggal }}</td>
                 <td >{{ $barang->harga_awal }}</td>
                 <td >{{ $barang->deskripsi_barang }}</td>
-                {{-- <td ><img src="'/image{{ $barang->image }}" width="100px" alt=""></td> --}}
                 <td>
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
                     <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
@@ -53,7 +51,7 @@
 
 @endsection
 
-@push('skrip')
+{{-- @push('skrip')
 
 <script src="{{asset ('adminlte/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
@@ -94,4 +92,4 @@
   });
 </script>
 
-@endpush
+@endpush --}}

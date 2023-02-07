@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/', function () {
 });
 
 route::resource('barang', BarangController::class);
+
+route::get('user', [UserController::class, 'view']);
 
 // route login
 route::get('login', [LoginController::class, 'view'])->name('login')->middleware('guest');

@@ -24,6 +24,7 @@
       <p class="login-box-msg">Buat akun baru</p>
 
       <form action="{{ route('register-store') }}" method="POST">
+        @csrf
         <div class="input-group mb-3">
           <input type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus  class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap">
           <div class="input-group-append">

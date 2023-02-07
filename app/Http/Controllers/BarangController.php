@@ -10,7 +10,7 @@ class BarangController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\ResponseT
      */
     public function index()
     {
@@ -20,7 +20,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource
      *
      * @return \Illuminate\Http\Response
      */
