@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class lelang extends Model
 {
     use HasFactory;
-    protected $table = 'barang';
+    protected $table = 'lelangs';
     protected $fillable = [
         'barang_id',
         'tanggal',

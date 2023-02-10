@@ -9,7 +9,7 @@
 <div class="col-md-12">
  <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Masukan Data Barang</h3>
+      <h3 class="card-title">MASUKAN BARANG YANG INGIN DILELANG</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->

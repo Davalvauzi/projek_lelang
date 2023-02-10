@@ -1,14 +1,14 @@
 @extends('master')
 
 @section('judul')
-<h1>Data Barang</h1>
+<h1>Data Lelang</h1>
 @endsection
 
 @section('content')
 
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Database Barang</h3>
+      <h3 class="card-title">Database Lelang</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -18,37 +18,37 @@
           <th class="th1">NO</th>
           <th class="th2">Nama Barang</th>
           <th class="th3">Tanggal</th>
-          <th class="th3">Harga Awal</th>
-          <th class="th3">Deskripsi Barang</th>
+          <th class="th3">Harga Akhir</th>
+          <th class="th3">Status</th>
           </tr>
         </thead>
         <tbody>
         <tr>
-          @forelse ($barangs as $barang)
+          @forelse ($lelangs as $lelang)
               
           <tr>
             <td >{{ $loop -> iteration }}</td>
-                <td >{{ $barang->nama_barang }}</td>
-                <td >{{ $barang->tanggal }}</td>
-                <td >{{ $barang->harga_awal }}</td>
-                <td >{{ $barang->deskripsi_barang }}</td>
-                <td>
+            <td >{{ $lelang->nama_lelang }}</td>
+                <td >{{ $lelang->tanggal }}</td>
+                <td >{{ $lelang->harga_awal }}</td>
+                <td >{{ $lelang->deskripsi_barang }}</td>
+                {{-- <td>
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
                     <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
                     <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a>
-
+                    
                     @csrf
                     @method('DELETE')
                     <input type="submit" class="btn btn-danger" value="Delete">
                   </form>
-                </td>
+                </td> --}}
               </tr>
-            </tr>
-            @empty
-            <tr>
-              <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
-            </tr>
-            @endforelse ($barangs as $barang)
+              @empty
+              <tr>
+                <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
+              </tr>
+              @endforelse ($lelangs as $lelang)
+        </tr>
         </tbody>
         </table>
     </div>

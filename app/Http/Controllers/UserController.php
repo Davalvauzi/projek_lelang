@@ -11,6 +11,7 @@ class UserController extends Controller
     //
     public function view()
     {
-        return view('user.index');
+        $users = User::all();
+        return view('user.index', compact('users'));
     }
 }

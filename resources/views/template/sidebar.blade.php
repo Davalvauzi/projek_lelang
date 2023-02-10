@@ -63,6 +63,7 @@
               </li>
             </ul>
           </li>
+          {{-- @if (auth()->user()->level == 'admin') --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -78,26 +79,10 @@
                   <p>Barang Lelang</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li>
             </ul>
           </li>
+          {{-- @endif --}}
+          {{-- @if (auth()->user()->level == 'admin') --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -114,6 +99,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/lelang" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tabel Lelang</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/user" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tabel User</p>
@@ -121,6 +112,7 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -42,7 +42,7 @@
           <input type="text" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Username anda">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-dice"></span>
             </div>
           </div>
           @error('name')

@@ -24,25 +24,29 @@
         </thead>
         <tbody>
         <tr>
-          @foreach ($errors as $user)
-              <tr>
-                <td >{{ $loop -> iteration }}</td>
-                <td >{{ $user->name }}</td>
-                <td >{{ $user->username }}</td>
-                <td >{{ $user->telepon }}</td>
-                {{-- <td >{{ $barang->deskripsi_barang }}</td> --}}
-                {{-- <td>
-                  <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
-                    <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
-                    <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a>
+          @forelse ($users as $user)
+          <tr>
+            <td >{{ $loop -> iteration }}</td>
+            <td >{{ $user->name }}</td>
+            <td >{{ $user->username }}</td>
+            <td >{{ $user->telepon }}</td>
+            {{-- <td >{{ $barang->deskripsi_barang }}</td> --}}
+            {{-- <td>
+              <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
+                <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
+                <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a>
 
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                  </form>
-                </td> --}}
-                </tr>
-          @endforeach
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger" value="Delete">
+              </form>
+            </td> --}}
+            </tr>
+          @empty
+          <tr>
+            <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
+          </tr>
+          @endforelse ($users as $user)
         </tr>
         </tbody>
         </table>

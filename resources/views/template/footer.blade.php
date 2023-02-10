@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
+      <b>Dafa</b> Alfauzi
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://web.facebook.com/AmazaRashi2">Facebook saya</a>.</strong> All rights reserved.
-  </footer>
+    <strong> <a href="https://github.com/RxxY99">GitHub Saya</a></strong>
+  </footer> 

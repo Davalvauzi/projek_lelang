@@ -33,11 +33,11 @@
           <label for="deskripsi_barang">Deskripsi Barang</label>
           <textarea class="form-control" rows="3" id="deskripsi_barang" name="deskripsi_barang" value="{{$barangs->deskripsi_barang}}"></textarea>
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="image">Foto</label>
           <input type="file" name="image" class="form-control" id="harga_awal" ">
           <img src="/image/{{ $barang->image }}" width="300px" alt="">
-        </div>
+        </div> --}}
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
