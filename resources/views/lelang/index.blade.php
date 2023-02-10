@@ -17,22 +17,26 @@
         <tr>
           <th class="th1">NO</th>
           <th class="th2">Nama Barang</th>
+          <th class="th2">Harga awal</th>
           <th class="th3">Tanggal</th>
           <th class="th3">Harga Akhir</th>
           <th class="th3">Status</th>
+          @if (auth()->user()->level == 'petugas')
+          <th class="th3">Action</th>
+          @endif
           </tr>
         </thead>
         <tbody>
         <tr>
           @forelse ($lelangs as $lelang)
-              
           <tr>
-            <td >{{ $loop -> iteration }}</td>
-            <td >{{ $lelang->nama_lelang }}</td>
-                <td >{{ $lelang->tanggal }}</td>
+                <td >{{ $loop -> iteration }}</td>
+                <td >{{ $lelang->nama_barang }}</td>
                 <td >{{ $lelang->harga_awal }}</td>
+                <td >{{ $lelang->harga_akhir }}</td>
                 <td >{{ $lelang->deskripsi_barang }}</td>
-                {{-- <td>
+                <td>
+                  @if (auth()->user()->level == 'petugas')   
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
                     <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
                     <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a>
@@ -41,7 +45,8 @@
                     @method('DELETE')
                     <input type="submit" class="btn btn-danger" value="Delete">
                   </form>
-                </td> --}}
+                  @endif
+                </td>
               </tr>
               @empty
               <tr>

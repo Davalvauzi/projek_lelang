@@ -80,6 +80,14 @@
                 </a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/lelang/create" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Buat Lelang</p>
+                </a>
+              </li>
+            </ul>
           </li>
           {{-- @endif --}}
           {{-- @if (auth()->user()->level == 'admin') --}}

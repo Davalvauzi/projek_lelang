@@ -27,6 +27,8 @@ route::resource('lelang', LelangController::class);
 
 route::resource('barang', BarangController::class);
 
+// route user
+route::delete('user', [UserController::class, 'destroy']);
 route::get('user', [UserController::class, 'view']);
 
 // route login

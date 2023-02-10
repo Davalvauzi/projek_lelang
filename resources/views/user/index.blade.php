@@ -31,16 +31,16 @@
             <td >{{ $user->username }}</td>
             <td >{{ $user->telepon }}</td>
             {{-- <td >{{ $barang->deskripsi_barang }}</td> --}}
-            {{-- <td>
-              <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
-                <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
-                <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a>
+            <td>
+              <form action="{{route('barang.destroy', $user->id)}}" method="POST">
+                {{-- <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
+                <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a> --}}
 
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger" value="Delete">
               </form>
-            </td> --}}
+            </td>
             </tr>
           @empty
           <tr>

@@ -13,7 +13,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('barang.store')}}" method="POST">
+    <form action="{{route('lelang.store')}}" method="POST">
         @csrf
       <div class="card-body">
         <div class="form-group" >
