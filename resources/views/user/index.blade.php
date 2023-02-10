@@ -32,7 +32,7 @@
             <td >{{ $user->telepon }}</td>
             {{-- <td >{{ $barang->deskripsi_barang }}</td> --}}
             <td>
-              <form action="{{route('barang.destroy', $user->id)}}" method="POST">
+              <form action="{{route('user.destroy', $user->id)}}" method="POST">
                 {{-- <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
                 <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a> --}}
 

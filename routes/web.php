@@ -6,7 +6,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\LelangController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\usercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +27,7 @@ route::resource('lelang', LelangController::class);
 
 route::resource('barang', BarangController::class);
 
-// route user
-route::delete('user', [UserController::class, 'destroy']);
-route::get('user', [UserController::class, 'view']);
+route::resource('user', usercontroller::class);
 
 // route login
 route::get('login', [LoginController::class, 'view'])->name('login')->middleware('guest');
