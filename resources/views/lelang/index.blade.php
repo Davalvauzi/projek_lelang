@@ -7,9 +7,11 @@
 @section('content')
 
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Database Lelang</h3>
+  @if (auth()->user()->level == 'petugas')
+    <div class="card-header d-flex justify-content-between mb-3">
+      <a href="/lelang/create" class="btn btn-primary">Tambah Lelang</a>
     </div>
+  @endif
     <!-- /.card-header -->
     <div class="card-body">
       <table id="example2" class="table table-bordered table-hover" class="datatable">
@@ -27,7 +29,6 @@
           </tr>
         </thead>
         <tbody>
-        <tr>
           @forelse ($lelangs as $lelang)
           <tr>
                 <td >{{ $loop -> iteration }}</td>
@@ -48,12 +49,11 @@
                   @endif
                 </td>
               </tr>
-              @empty
-              <tr>
-                <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
-              </tr>
-              @endforelse ($lelangs as $lelang)
-        </tr>
+            @empty
+            <tr>
+              <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
+            </tr>
+            @endforelse ($lelangs as $lelang)
         </tbody>
         </table>
     </div>

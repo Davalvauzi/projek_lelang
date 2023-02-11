@@ -19,6 +19,7 @@
           <th class="th2">Nama User</th>
           <th class="th3">Username</th>
           <th class="th3">Telepon</th>
+          <th class="th3">Otoritas</th>
           {{-- <th class="th3">Deskripsi Barang</th> --}}
           </tr>
         </thead>
@@ -30,6 +31,7 @@
             <td >{{ $user->name }}</td>
             <td >{{ $user->username }}</td>
             <td >{{ $user->telepon }}</td>
+            <td >{{ $user->level }}</td>
             {{-- <td >{{ $barang->deskripsi_barang }}</td> --}}
             <td>
               <form action="{{route('user.destroy', $user->id)}}" method="POST">

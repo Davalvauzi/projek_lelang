@@ -50,7 +50,7 @@ class LelangController extends Controller
     public function store(Request $request)
     {
         //
-        $data = Request()->validate([
+        $request->validate([
             'nama_barang' => 'required|exists:barangs,id|unique:lelang,barangs_id',
             'tanggal' => 'required|date',
             'harga_akhir' => 'required|numeric'

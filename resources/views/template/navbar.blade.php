@@ -7,13 +7,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('barang.index')}}" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('barang.create')}}" class="nav-link">Tambah Data Barang</a>
-        {{-- <a href="#" class="nav-link">Contact</a> --}}
-      </li>
     </ul>
     {{-- right navbar links --}}
     <ul class="navbar-nav ml-auto">

@@ -29,7 +29,7 @@
           <input type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus  class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
+              
             </div>
           </div>
           @error('name')
@@ -42,7 +42,7 @@
           <input type="text" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Username anda">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-dice"></span>
+              
             </div>
           </div>
           @error('name')
@@ -56,7 +56,7 @@
           @enderror" placeholder="Nomor telepon anda">
           <div class="input-group-append">
             <div class="input-group-text">
-              <i class="fas fa-phone-alt"></i>            
+                          
             </div>
           </div>
           @error('name')
@@ -69,7 +69,7 @@
           <input type="password" name="password" value="{{ old('name') }}" required autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror"  placeholder="Password anda">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              
             </div>
           </div>
         </div>

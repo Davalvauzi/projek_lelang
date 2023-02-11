@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{asset('adminlte/index3.html')}}" class="brand-link">
       <img src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Anjay Mabar</span>
+      <span class="brand-text font-weight-light">Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,11 +13,11 @@
           <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Dafa Johnson</a>
+          <a href="#" class="d-block">Dafa Alfauzi</a>
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
+      {{-- <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -27,100 +27,51 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{asset('adminlte/index.html')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+               @if (auth()->user()->level == 'admin')  
+               <li class="nav-item">
+                 <a href="/user" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                    Data User
+                  </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{asset('adminlte/index2.html')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+              @endif
+               @if (auth()->user()->level == 'admin')  
+               <li class="nav-item">
+                 <a href="/barang" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                    Data Barang
+                  </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{asset('adminlte/index3.html')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+              @endif
+              @if (auth()->user()->level == 'petugas')  
+               <li class="nav-item">
+                 <a href="/barang" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                    Data Barang
+                  </p>
                 </a>
               </li>
-            </ul>
-          </li>
-          {{-- @if (auth()->user()->level == 'admin') --}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Isi Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/barang/create" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Barang Lelang</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/lelang/create" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buat Lelang</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          {{-- @endif --}}
-          {{-- @if (auth()->user()->level == 'admin') --}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Tabel Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/barang" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tabel Barang </p>
-                </a>
-              </li>
+              @endif
               <li class="nav-item">
                 <a href="/lelang" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tabel Lelang</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/user" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tabel User</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          {{-- @endif --}}
+                 <i class="nav-icon fas fa-table"></i>
+                 <p>
+                   Data Lelang
+                 </p>
+               </a>
+             </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

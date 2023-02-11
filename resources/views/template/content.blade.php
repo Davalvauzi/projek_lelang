@@ -1,10 +1,5 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <style>
-        .judul {
-            color: yellowgreen
-        }
-    </style>
     <section class="content-header">
         <div class="container-Wfluid">
             <div class="row mb-2">

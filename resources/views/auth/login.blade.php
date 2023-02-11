@@ -30,15 +30,13 @@
           <input type="text" name="username" class="form-control" placeholder="Username Anda">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-dice"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Kata Sandi">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>

@@ -13,30 +13,64 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('lelang.store')}}" method="POST">
+    <form action="{{route('lelang.store')}}" method="POST" data-parsley-validate>
         @csrf
       <div class="card-body">
-        <div class="form-group" >
-            <label for="nama_barang">Barang</label>
-            <input type="text" name="nama_barang" class="form-control" id="nama_barang" placeholder="Masukan nama barang">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group mandatory">
+              <label for="barangs_id" class="form-label">{{ __('Nama Barang') }}</label>
+              <select class="form-select form-control @error('barangs_id') is-invalid @enderror" id="barangs_id" name="barangs_id" data-parsley-required="true">
+                <option value="" disabled><strong>Pilih Barang</strong></option>
+                @forelse ($barangs as $item)
+                  <option value="{{ $item->id }}">{{ Str::of($item->nama_barang)->title() }} -  {{ str::of($item->harga_awal) }}</option>
+                @empty
+                  <option value="" disabled>Barang Semuanya Sudah Di Lelang</option>
+                @endforelse
+              </select>
+            </div>
+            @error('barangs_id')
+              <div class="aler alert-danger" role="alert">{{ $message }}</div>
+            @enderror
           </div>
-        <div class="form-group">
-            <label for="tanggal">Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Masukan tanggal">
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-12">
+              <div class="form-group mandatory">
+                  <label for="tanggal" class="form-label">{{ __('Tanggal Lelang') }}</label>
+                  <input type="date" id="tanggal_lelang" class="form-control @error('tanggal_lelang') is-invalid @enderror" name="tanggal_lelang" data-parsley-required="true" value="{{ old('tanggal_lelang') }}">
+              </div>
+              @error('tanggal_lelang')
+                <div class="alert alert-danger" role="alert">{{ $message }}</div>
+              @enderror
           </div>
-        <div class="form-group">
-            <label for="harga_awal">Harga Awal</label>
-            <input type="text" name="harga_awal" class="form-control" id="harga_awal" placeholder="Masukan harga awal">
+          <div class="col-md-6 col-12">
+              <div class="form-group mandatory">
+                  <label for="harga_awal" class="form-label">{{ __('Harga Akhir') }}</label>
+                  <input type="text" id="harga_akhir" class="form-control @error('harga_akhir') is-invalid @enderror" placeholder="Input Harga, Hanya Angka" name="harga_akhir" data-parsley-required="true" value="{{ old('harga_akhir') }}">
+              </div>
+              @error('harga_akhir')
+                <div class="alert alert-danger" role="alert">{{ $message }}</div>
+              @enderror
           </div>
-          <div class="form-group">
-            <label for="deskripsi_barang">Deskripsi Barang</label>
-            <textarea class="form-control" rows="3" id="deskripsi_barang" name="deskripsi_barang" placeholder="Deskripsi barang anda"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-6 d-flex justify-content-start">
+              <a href="{{ route('lelang.index') }}" class="btn btn-outline-info me-1 mb-1">
+                {{ __('Kembali') }}
+              </a>
           </div>
+        <div class="col-6 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary me-1 mb-1">
+              {{ __('Submit') }}
+            </button>
+            <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+              {{ __('Reset') }}
+            </button>
+        </div>
+      </div>
       </div>
       <!-- /.card-body -->
-      <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Submit</button> 
-      </div>
     </form>
   </div>
 </div>
