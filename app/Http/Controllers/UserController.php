@@ -28,6 +28,7 @@ class usercontroller extends Controller
     public function create()
     {
         //
+        return view('user.create');
     }
 
     /**

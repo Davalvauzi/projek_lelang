@@ -7,8 +7,8 @@
 @section('content')
 
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Database User</h3>
+    <div class="card-header d-flex justify-content-between mb-3">
+      <a href="/user/create" class="btn btn-primary">Tambah Barang</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

@@ -38,16 +38,11 @@
           <input type="file" name="image" class="form-control" id="harga_awal" ">
           <img src="/image/{{ $barang->image }}" width="300px" alt="">
         </div> --}}
-        <div class="row">
-          <div class="col-md-6 d-flex justify-content-start">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col-md-6 d-flex justify-content-end">
-            <a href="/barang" class="btn btn-outline-info">Kembali</a>
-          </div>
-        </div>
       </div>
       <!-- /.card-body -->
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </form>
   </div>
 </div>

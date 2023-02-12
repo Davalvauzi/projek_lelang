@@ -39,18 +39,32 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+        $permintaan = $request->validate([
             'nama_barang' => 'required',
             'tanggal' => 'required',
             'harga_awal' => 'required',
-            'deskripsi_barang' => 'required'
+            'deskripsi_barang' => 'required',
+            'image' => 'image|file|max:10024',
         ]);
-        barang::create([
-            'nama_barang' => $request->nama_barang,
-            'tanggal' => $request->tanggal,
-            'harga_awal' => $request->harga_awal,
-            'deskripsi_barang' => $request->deskripsi_barang
-        ]);
+
+        if ($request->file('image')) {
+            $permintaan['image'] = $request->file('image')->store('post-images');
+        }
+
+        // $image = time() . '.' . $request->image->extension();
+
+        // $request->image->move(public_path('images'), $image);
+
+        // barang::create([
+        //     'nama_barang' => $request->nama_barang,
+        //     'tanggal' => $request->tanggal,
+        //     'harga_awal' => $request->harga_awal,
+        //     'deskripsi_barang' => $request->deskripsi_barang,
+        //     'image' => $request->image
+        // ]);
+
+        barang::create($permintaan);
+
         return redirect('/barang');
     }
 

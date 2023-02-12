@@ -19,6 +19,7 @@ class CreateBarangsTable extends Migration
             $table->date('tanggal');
             $table->string('harga_awal', 50);
             $table->string('deskripsi_barang');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

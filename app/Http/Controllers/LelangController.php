@@ -17,12 +17,7 @@ class LelangController extends Controller
     public function index()
     {
         //
-        $lelangs = lelang::select('id', 'barangs_id', 'tanggal', 'harga_akhir', 'status')
-            ->where([
-                'status' => 'dibuka',
-                'users_id' => Auth::user()->id
-            ])
-            ->get();
+        $lelangs = lelang::all();
         return view('lelang.index', compact('lelangs'));
     }
 
@@ -51,7 +46,7 @@ class LelangController extends Controller
     {
         //
         $request->validate([
-            'nama_barang' => 'required|exists:barangs,id|unique:lelang,barangs_id',
+            'barangs_id' => 'required|exists:barangs,id|unique:lelang,barangs_id',
             'tanggal' => 'required|date',
             'harga_akhir' => 'required|numeric'
         ], [
@@ -63,9 +58,9 @@ class LelangController extends Controller
             'harga_akhir.required' => 'Harga Akhir Harus Diisi',
             'harga_akhir.numeric' => 'Harga Akhir Harus Harus Berupa Angka',
         ]);
-        $lelang = new Lelang;
+        $lelang = new lelang;
         $lelang->barangs_id = $request->barangs_id;
-        $lelang->tanggal_lelang = $request->tanggal_lelang;
+        $lelang->tanggal = $request->tanggal;
         $lelang->harga_akhir = $request->harga_akhir;
         $lelang->users_id = Auth::user()->users_id;
         $lelang->status = 'dibuka';

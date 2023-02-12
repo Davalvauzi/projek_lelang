@@ -21,7 +21,7 @@
           <th>Nama Barang</th>
           <th>Tanggal</th>
           <th>Harga Awal</th>
-          <th>Deskripsi Barang</th>
+          <th><center>Actions</center></th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,6 @@
                 <td>{{ $barang->nama_barang }}</td>
                 <td>{{ $barang->tanggal }}</td>
                 <td>{{ $barang->harga_awal }}</td>
-                <td>{{ $barang->deskripsi_barang }}</td>
                 <td>
                   <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
