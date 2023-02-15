@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class usercontroller extends Controller
 {
@@ -40,6 +42,24 @@ class usercontroller extends Controller
     public function store(Request $request)
     {
         //
+        $data = request()->validate(
+            [
+                'username' => 'required|unique:users,username',
+                'password' => 'required',
+            ],
+            [
+                'name.required' => 'Username Wajib Diisi',
+                'name.unique' => 'Username Sudah ada',
+                'password.required' => 'Password Wajib Diisi'
+            ]
+        );
+
+        User::create([
+            'username' => Str::camel($data['username']),
+            'password' => bcrypt($data['password']),
+            'level' => 'petugas'
+        ]);
+        return redirect('/user');
     }
 
     /**
@@ -59,9 +79,11 @@ class usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(user $user)
     {
         //
+        $users = user::find($user->id);
+        return view('user.edit', compact('users'));
     }
 
     /**
@@ -71,9 +93,20 @@ class usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, user $user)
     {
         //
+        $permintaan = $request->validate([
+            'username' => 'required',
+            'level' => 'required'
+        ]);
+
+        $users = user::find($user->id);
+        $users->username = $request->username;
+        $users->level = $request->level;
+        $users->update();
+
+        return redirect('/user');
     }
 
     /**

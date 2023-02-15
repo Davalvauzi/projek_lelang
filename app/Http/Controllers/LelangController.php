@@ -46,15 +46,15 @@ class LelangController extends Controller
     {
         //
         $request->validate([
-            'barangs_id' => 'required|exists:barangs,id|unique:lelang,barangs_id',
+            'barangs_id' => 'required|exists:barangs,id|unique:lelangs,barangs_id',
             'tanggal' => 'required|date',
             'harga_akhir' => 'required|numeric'
         ], [
             'barang_id.required' => 'Barang Harus Diisi',
             'barang_id.exists' => 'Barang Tidak Ada Pada Data Barang',
             'barang_id.unique' => 'Barang Sudah Ada',
-            'tanggal_lelang.required' => 'Tanggal Lelang Harus Diisi',
-            'tanggal_lelang.date' => 'Tanggal Lelang Harus Berupa Tanggal',
+            'tanggal.required' => 'Tanggal Lelang Harus Diisi',
+            'tanggal.date' => 'Tanggal Lelang Harus Berupa Tanggal',
             'harga_akhir.required' => 'Harga Akhir Harus Diisi',
             'harga_akhir.numeric' => 'Harga Akhir Harus Harus Berupa Angka',
         ]);
@@ -62,7 +62,7 @@ class LelangController extends Controller
         $lelang->barangs_id = $request->barangs_id;
         $lelang->tanggal = $request->tanggal;
         $lelang->harga_akhir = $request->harga_akhir;
-        $lelang->users_id = Auth::user()->users_id;
+        $lelang->users_id = Auth::user()->id;
         $lelang->status = 'dibuka';
         $lelang->save();
 

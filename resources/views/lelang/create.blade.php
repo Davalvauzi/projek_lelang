@@ -38,7 +38,7 @@
           <div class="col-md-6 col-12">
               <div class="form-group mandatory">
                   <label for="tanggal" class="form-label">{{ __('Tanggal Lelang') }}</label>
-                  <input type="date" id="tanggal_lelang" class="form-control @error('tanggal_lelang') is-invalid @enderror" name="tanggal_lelang" data-parsley-required="true" value="{{ old('tanggal_lelang') }}">
+                  <input type="date" id="tanggal_lelang" class="form-control @error('tanggal_lelang') is-invalid @enderror" name="tanggal" data-parsley-required="true" value="{{ old('tanggal_lelang') }}">
               </div>
               @error('tanggal_lelang')
                 <div class="alert alert-danger" role="alert">{{ $message }}</div>

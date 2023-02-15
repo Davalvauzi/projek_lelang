@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $level = ['masyarakat', 'petugas', 'admin'];
+
     protected $fillable = [
         'name',
         'username',

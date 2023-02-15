@@ -11,15 +11,15 @@ class lelang extends Model
     use HasFactory;
     protected $table = 'lelangs';
     protected $fillable = [
-        'barang_id',
+        'barangs_id',
         'users_id',
-        'tanggal',
         'harga_akhir',
+        'tanggal',
         'status'
     ];
 
     public function barang()
     {
-        return $this->hasOne('App\Models\Barang', 'id', 'barangs_id');
+        return $this->hasOne('App\Models\barang', 'id', 'barangs_id');
     }
 }

@@ -35,15 +35,15 @@
                 <td>
                   <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
-                    <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">
-                      <i class="far fa-eye"></i>
+                      <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">
+                        <i class="far fa-eye"></i>
                       Detail
                     </a>
                     <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">
                       <i class="fas fa-edit"></i>
                       Edit
                     </a>
-
+                    
                     @csrf
                     @method('DELETE')
                     <button type="submit" value="Delete" class="btn btn-danger">

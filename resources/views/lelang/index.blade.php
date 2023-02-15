@@ -17,41 +17,48 @@
       <table id="example2" class="table table-bordered table-hover" class="datatable">
         <thead>
         <tr>
-          <th class="th1">NO</th>
-          <th class="th2">Nama Barang</th>
-          <th class="th2">Harga awal</th>
-          <th class="th3">Tanggal</th>
-          <th class="th3">Harga Akhir</th>
-          <th class="th3">Status</th>
+          <th>NO</th>
+          <th>Nama Barang</th>
+          <th>Harga awal</th>
+          <th>Tanggal</th>
+          <th>Harga Akhir</th>
+          <th>Status</th>
           @if (auth()->user()->level == 'petugas')
-          <th class="th3">Action</th>
+          <th><center>Action</center></th>
           @endif
           </tr>
         </thead>
         <tbody>
+          <tr>
           @forelse ($lelangs as $lelang)
           <tr>
-                <td >{{ $loop -> iteration }}</td>
-                <td >{{ $lelang->nama_barang }}</td>
-                <td >{{ $lelang->harga_awal }}</td>
-                <td >{{ $lelang->harga_akhir }}</td>
-                <td >{{ $lelang->deskripsi_barang }}</td>
-                <td>
-                  @if (auth()->user()->level == 'petugas')   
-                  <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
-                    <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">Detail</a>
-                    <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">Edit</a>
+            <td >{{ $loop -> iteration }}</td>
+            <td >{{ $lelang->barang->nama_barang }}</td>
+            <td >{{ $lelang->barang->harga_awal }}</td>
+            <td >{{ $lelang->harga_akhir }}</td>
+            <td >{{ \Carbon\Carbon::parse($lelang->tanggal)->format('j-F-Y') }}</td>
+              <td>
+                <span class="badge {{ $lelang->status == 'ditutup' ? 'bg-danger' : 'bg-success'  }}">{{ Str::title($lelang->status) }}</span>
+              </td>
+              <td>
+                  @if (auth()->user()->level == 'petugas') 
+                  <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
+                    <form action="/lelang/{{ $lelang->id }}" method="POST">
+                      <a class="btn btn-info mr-3" href="/lelang{{ $lelang->id }}">Detail</a>
+                    <a class="btn btn-warning mr-3" href="/lelang{{ $lelang->id }}">Edit</a>
                     
                     @csrf
                     @method('DELETE')
                     <input type="submit" class="btn btn-danger" value="Delete">
                   </form>
+                  </div>  
                   @endif
-                </td>
-              </tr>
-            @empty
+              </td>
+            </tr>
+          </tr>
+              @empty
             <tr>
-              <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
+              <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Lelang Kosong</strong></td>
             </tr>
             @endforelse ($lelangs as $lelang)
         </tbody>

@@ -19,10 +19,11 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ route('login') }}" class="h1"><b>Program </b>LELANG</a>
+      <a href="{{ route('login') }}" class="h1"><b>PROGRAM </b>LELANG </a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Masuk untuk ke halaman utama</p>
+      <p class="login-box-msg">LAYANA LELANG TERPERCAYA 100%</p>
+      <P class="login-box-msg">no cap</P>
 
       <form action="{{ route('login.proses') }}" method="post">
         @csrf
@@ -42,13 +43,13 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
       <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">Buat Akun Baru</a>
+        <a href="{{ route('register') }}" class="text-center">Belum Punya Akun?</a>
       </p>
     </div>
     <!-- /.card-body -->
