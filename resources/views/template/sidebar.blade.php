@@ -2,7 +2,23 @@
     <!-- Brand Logo -->
     <a href="{{asset('adminlte/index3.html')}}" class="brand-link">
       <img src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin</span>
+      <span class="brand-text font-weight-light">
+              @if (auth()->user()->level === 'admin')
+                  <div class="info">
+                    ADMIN
+                  </div>
+              @endif
+              @if (auth()->user()->level === 'petugas')
+                  <div class="info">
+                    PETUGAS
+                  </div>
+              @endif
+              @if (auth()->user()->level === 'masyarakat')
+                  <div class="info">
+                    MASYARAKAT
+                  </div>
+              @endif
+      </span>
     </a>
 
     <!-- Sidebar -->
@@ -26,9 +42,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-              @if (auth()->user()->level === 'admin')
-                  
-              @endif
+              
 
 
 

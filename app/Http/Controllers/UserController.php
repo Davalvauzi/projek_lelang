@@ -68,9 +68,11 @@ class usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(user $user)
     {
         //
+        $users = user::find($user->id);
+        return view('user.show', compact('users'));
     }
 
     /**
@@ -96,7 +98,7 @@ class usercontroller extends Controller
     public function update(Request $request, user $user)
     {
         //
-        $permintaan = $request->validate([
+        $request->validate([
             'username' => 'required',
             'level' => 'required'
         ]);

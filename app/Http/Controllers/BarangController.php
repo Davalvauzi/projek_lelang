@@ -104,12 +104,11 @@ class BarangController extends Controller
     public function update(Request $request, barang $barang)
     {
         //
-        $permintaan = $request->validate([
+        $request->validate([
             'nama_barang' => 'required',
             'tanggal' => 'required',
             'harga_awal' => 'required',
-            'deskripsi_barang' => 'required',
-            'foto_barang' => 'required'
+            'deskripsi_barang' => 'required'
         ]);
 
         $barangs = barang::find($barang->id);
@@ -117,7 +116,6 @@ class BarangController extends Controller
         $barangs->tanggal = $request->tanggal;
         $barangs->harga_awal = $request->harga_awal;
         $barangs->deskripsi_barang = $request->deskripsi_barang;
-        $barangs->foto_barang = $request->foto_barang;
         $barangs->update();
 
         return redirect('/barang');

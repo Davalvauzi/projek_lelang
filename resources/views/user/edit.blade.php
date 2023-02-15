@@ -17,11 +17,24 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="username">Barang</label>
-          <input type="text" name="username" class="form-control" id="username" value="{{$users->username}}">
+        <div class="row">
+          <div class="col-md-8 col-12">
+              <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" value="{{$users->username}}">
+          </div>
+          </div>
+          <div class="col-md-4 col-12">
+              <div class="form-group">
+              <label for="level">Otoritas</label>
+              <select name="level" id="level" class="form-select form-control" data-parsley-required>
+                <option value="masyarakat">Masyarakat</option>
+                <option value="petugas">Petugas</option>
+              </select>
+            </div>
+          </div>
+          </div>
         </div>
-      </div>
       <!-- /.card-body -->
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Submit</button>

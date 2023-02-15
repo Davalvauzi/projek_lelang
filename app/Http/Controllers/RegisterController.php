@@ -21,9 +21,9 @@ class RegisterController extends Controller
         $data = request()->validate(
             [
                 'name' => 'required|min:1|max:25',
-                'username' => 'required|unique:users,username',
-                'password' => 'required|min:8',
-                'telepon' => 'required|numeric',
+                'username' => 'required|unique:users,username|max:15',
+                'password' => 'required|min:4',
+                'telepon' => 'required|numeric|max:13',
             ],
             [
                 'name.required' => 'Nama tidak boleh kosong',
@@ -31,10 +31,12 @@ class RegisterController extends Controller
                 'name.max' => 'Nama anda terlalu panjang',
                 'username.required' => 'Username tidak boleh kosong',
                 'username.unique' => 'Username sudah terdaftar',
+                'username.max' => 'Username anda terlalu panjang',
                 'password.required' => 'Password tidak boleh kosong',
                 'password.min' => 'Password terlalu pendek',
-                'telepon.required' => 'Telepon tidak boleh kosong',
-                'telepon.numeric' => 'Telepon harus berupa angka',
+                'telepon.required' => 'Nomor Telepon tidak boleh kosong',
+                'telepon.numeric' => 'Nomor Telepon harus berupa angka',
+                'telepon.max' => 'Nomor Telepon terlalu panjang',
             ]
         );
 

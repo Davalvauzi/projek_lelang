@@ -35,7 +35,7 @@
                 <td>
                   <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
-                      <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">
+                    <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">
                         <i class="far fa-eye"></i>
                       Detail
                     </a>
