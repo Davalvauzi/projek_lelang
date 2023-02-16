@@ -31,7 +31,7 @@
             <td >{{ $loop -> iteration }}</td>
                 <td>{{ $barang->nama_barang }}</td>
                 <td>{{ $barang->tanggal }}</td>
-                <td>{{ $barang->harga_awal }}</td>
+                <td>@currency ( $barang->harga_awal) </td>
                 <td>
                   <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                   <form action="{{route('barang.destroy', $barang->id)}}" method="POST">
@@ -39,17 +39,21 @@
                         <i class="far fa-eye"></i>
                       Detail
                     </a>
+                    @if (auth()->user()->level === 'admin')
                     <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">
                       <i class="fas fa-edit"></i>
                       Edit
                     </a>
+                    @endif
                     
                     @csrf
                     @method('DELETE')
+                    @if (auth()->user()->level === 'admin')
                     <button type="submit" value="Delete" class="btn btn-danger">
                       <i class="fas fa-trash"></i>
                       hapus
                     </button>
+                    @endif
                   </form>
                   </div>
                 </td>

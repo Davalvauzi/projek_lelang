@@ -23,7 +23,7 @@
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" id="username" value="{{$users->username}}">
           </div>
-          </div>
+          </div>  
           <div class="col-md-4 col-12">
               <div class="form-group">
               <label for="level">Otoritas</label>

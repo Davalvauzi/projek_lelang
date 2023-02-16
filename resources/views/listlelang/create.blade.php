@@ -56,7 +56,7 @@
         </div>
         <div class="row">
           <div class="col-6 d-flex justify-content-start">
-              <a href="/lelang" class="btn btn-outline-info me-1 mb-1">
+              <a href="{{ route('lelang.index') }}" class="btn btn-outline-info me-1 mb-1">
                 {{ __('Kembali') }}
               </a>
           </div>

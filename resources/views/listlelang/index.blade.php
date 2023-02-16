@@ -34,8 +34,8 @@
           <tr>
             <td >{{ $loop -> iteration }}</td>
             <td >{{ $lelang->barang->nama_barang }}</td>
-            <td >@currency ($lelang->barang->harga_awal)  </td>
-            <td >@currency ($lelang->harga_akhir ) </td>
+            <td >{{ $lelang->barang->harga_awal }}</td>
+            <td >{{ $lelang->harga_akhir }}</td>
             <td >{{ \Carbon\Carbon::parse($lelang->tanggal)->format('j-F-Y') }}</td>
               <td>
                 <span class="badge {{ $lelang->status == 'ditutup' ? 'bg-danger' : 'bg-success'  }}">{{ Str::title($lelang->status) }}</span>

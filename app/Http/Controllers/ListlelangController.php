@@ -7,7 +7,7 @@ use App\Models\barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LelangController extends Controller
+class ListlelangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,6 +19,11 @@ class LelangController extends Controller
         //
         $lelangs = lelang::all();
         return view('lelang.index', compact('lelangs'));
+    }
+    public function penawaran()
+    {
+        $lelangs = lelang::all();
+        return view('listlelang.index', compact('lelangs'));
     }
 
     /**
@@ -66,27 +71,28 @@ class LelangController extends Controller
         $lelang->status = 'dibuka';
         $lelang->save();
 
-        return redirect()->route('lelang.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('petugas/lelang');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\lelang  $lelang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(lelang $lelang)
+    public function show($id)
     {
         //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\lelang  $lelang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(lelang $lelang)
+    public function edit($id)
     {
         //
     }
@@ -95,10 +101,10 @@ class LelangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\lelang  $lelang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, lelang $lelang)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -106,13 +112,11 @@ class LelangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\lelang  $lelang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(lelang $lelang)
+    public function destroy($id)
     {
         //
-        $lelangs = lelang::select('id', 'barangs_id', 'tanggal', 'harga_akhir', 'status')->get();
-        return view('listlelang.index', compact('lelangs'));
     }
 }

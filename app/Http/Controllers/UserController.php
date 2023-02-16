@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\barang;
+use App\Models\lelang;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,6 +22,14 @@ class usercontroller extends Controller
         //
         $users = User::all();
         return view('user.index', compact('users'));
+    }
+
+    public function home()
+    {
+        //
+        $barangs = barang::all();
+        $lelangs = lelang::all();
+        return view('welcome', compact('barangs', 'lelangs'));
     }
 
     /**
@@ -59,6 +69,7 @@ class usercontroller extends Controller
             'password' => bcrypt($data['password']),
             'level' => 'petugas'
         ]);
+
         return redirect('/user');
     }
 
