@@ -2,8 +2,6 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-<section class="content">
 
     <!-- Default box -->
     <div class="card">
@@ -19,10 +17,44 @@
           </button>
         </div>
       </div>
-      <div class="card-body"><strong>
-        Anda berada di dashboard admin
-      </strong>
+      <div class="card-body">
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <!-- small card -->
+          <div class="small-box bg-info">
+            <div class="inner">
+            <h3>{{ $jumlahbarang }}</h3>
+            
+            <p>New Orders</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <a href="#" class="small-box-footer">
+            More info <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+        </div>
+  
+        <div class="col-lg-3 col-6">
+          <!-- small card -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>{{ $jumlahuser }}</h3>
+              
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fas fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>  
       </div>
+      
       <!-- /.card-body -->
       <div class="card-footer">
         Footer
@@ -31,5 +63,6 @@
     </div>
     <!-- /.card -->
 
+    
   </section>
-@endsection
+  @endsection

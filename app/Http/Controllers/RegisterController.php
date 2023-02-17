@@ -22,8 +22,8 @@ class RegisterController extends Controller
             [
                 'name' => 'required|min:1|max:25',
                 'username' => 'required|unique:users,username|max:15',
+                'telepon' => 'required|numeric',
                 'password' => 'required|min:4',
-                'telepon' => 'required|numeric|max:13',
             ],
             [
                 'name.required' => 'Nama tidak boleh kosong',
@@ -43,9 +43,9 @@ class RegisterController extends Controller
         User::create([
             'name' => Str::camel($data['name']),
             'username' => Str::lower($data['username']),
+            'telepon' => $data['telepon'],
             'password' => bcrypt($data['password']),
             'level' => 'masyarakat',
-            'telepon' => $data['telepon'],
         ]);
         return redirect('/login');
     }

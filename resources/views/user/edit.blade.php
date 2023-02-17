@@ -19,25 +19,41 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-8 col-12">
-              <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" class="form-control" id="username" value="{{$users->username}}">
-          </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" name="username" class="form-control" id="username" value="{{$users->username}}">
+            </div>
           </div>  
           <div class="col-md-4 col-12">
-              <div class="form-group">
-              <label for="level">Otoritas</label>
-              <select name="level" id="level" class="form-select form-control" data-parsley-required>
-                <option value="masyarakat">Masyarakat</option>
-                <option value="petugas">Petugas</option>
-              </select>
+            <div class="form-group">
+                <label for="level">Otoritas</label>
+                  <select name="level" id="level" class="form-select form-control" data-parsley-required>
+                    <option value="" disabled><strong>PILIH ROLE</strong></option>
+                    <option value="masyarakat">Masyarakat</option>
+                    <option value="petugas">Petugas</option>
+                  </select>
             </div>
           </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="text" name="password" class="form-control" id="password" value="{{$users->password}}">
+            </div>
           </div>
         </div>
       <!-- /.card-body -->
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="row">
+          <div class="col-md-6 d-flex justify-content-start">
+            <button type="submit" class="btn btn-primary">Submit</button> 
+          </div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <a href="/barang" class="btn btn-outline-info">
+              Kembali
+            </a>
+          </div>
+      </div>
       </div>
     </form>
   </div>

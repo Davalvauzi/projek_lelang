@@ -22,6 +22,8 @@ use App\Http\Controllers\ListlelangController;
 
 route::get('/', [usercontroller::class, 'home'])->name('home');
 
+route::get('/', [usercontroller::class, 'home'])->name('home');
+
 route::resource('lelang', LelangController::class);
 
 route::resource('listlelang', ListlelangController::class);
@@ -66,7 +68,7 @@ route::middleware(['auth', 'level:admin,petugas'])->group(function () {
 });
 
 
-// middleware only admin
+// middleware only admin    
 route::middleware(['auth', 'level:admin'])->group(function () {
     route::controller(usercontroller::class)->group(function () {
         route::get('user', 'index')->name('user.index');
@@ -91,5 +93,7 @@ route::middleware(['auth', 'level:petugas'])->group(function () {
 
 // middleware only masyarakat
 route::middleware(['auth', 'level:masyarakat'])->group(function () {
-    route::controller();
+    route::controller(ListlelangController::class)->group(function () {
+        route::get('listlelang', 'index')->name('listlelang.index');
+    });
 });

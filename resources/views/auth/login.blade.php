@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Halaman Login Dafa</title>
+  <title>Halaman Login Dafa</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,6 +13,18 @@
   <link rel="stylesheet" href="{{ asset ('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset ('adminlte/dist/css/adminlte.min.css') }}">
+  <style>
+    body {
+      background-image: url("{{ asset('img/jepang.jpg') }}");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .register-box{
+      background-color: aqua;
+    }
+  </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -22,7 +34,7 @@
       <a href="{{ route('login') }}" class="h1"><b>PROGRAM </b>LELANG </a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">LAYANA LELANG TERPERCAYA 100%</p>
+      <p class="login-box-msg">LAYANAN LELANG TERPERCAYA 100%</p>
       <P class="login-box-msg">no cap</P>
 
       <form action="{{ route('login.proses') }}" method="post">

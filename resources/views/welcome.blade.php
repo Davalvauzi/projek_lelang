@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopi kenangan Senja</title>
+    <title>Halaman Home Dafa</title>
 
 <!-- fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,9 +44,8 @@
 
     <section class="hero" id="home">
         <main class="content">
-            <h1>Mari lelang barang anda disini <span></span></h1>
+            <h1>Lelang Barang Anda <span>Disini</span></h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            <a href="$" class="cta">beli sekarang</a>
         </main> 
     </section>
 
@@ -78,12 +77,23 @@
         <p>Disini anda bisa melihat barang yang akan kami lelang.</p>
 
         <div class="row">
-            @foreach ($lelangs as $item)
-                <div class="menu-card">
+            {{-- <div class="menu-card">
+                @foreach ($lelangs as $item)
+                <div class="menu-card" class="menu-card-img">
                     @if ($item -> barang -> image)
-                    <img src="{{ asset('storage/' . $item->barang->image) }}" alt="{{ $item->barang->image }}" class="img-fluid mt-3">
+                    <img src="{{ asset('storage/' . $item->barang->image) }}" alt="{{ $item->barang->image }}" class="img-fluid mt-3" style="width:25%;">
                     @endif
                 </div>
+                @endforeach
+            </div> --}}
+            @foreach ($barangs as $item)
+            <div class="menu-card">
+                <div class="menu-card" class="menu-card-img">
+                    @if ($item -> image)
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->image }}" class="img-fluid mt-3">
+                    @endif
+                </div>
+            </div>
             @endforeach
             <div class="menu-card">
                 <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">

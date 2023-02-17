@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Controller
 {
     //
     public function admin()
     {
-        return view('dashboard.admin');
+        $barangs = db::table('barangs')->count();
+        $users = db::table('users')->count();
+        $count = User::all()->count();
+        $count = barang::all()->count();
+        return view('dashboard.admin', compact('barangs', 'users'))->with(['jumlahbarang' => $barangs, 'jumlahuser' => $users]);
     }
 
     public function petugas()

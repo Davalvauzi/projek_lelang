@@ -20,6 +20,8 @@ class usercontroller extends Controller
     public function index()
     {
         //
+        // $c = User::where('level', 'masyarakat')->count();
+        // dd($c);
         $users = User::all();
         return view('user.index', compact('users'));
     }
@@ -30,6 +32,15 @@ class usercontroller extends Controller
         $barangs = barang::all();
         $lelangs = lelang::all();
         return view('welcome', compact('barangs', 'lelangs'));
+    }
+
+    public function sidebar()
+    {
+        //
+        $users = user::all();
+        $barangs = barang::all();
+        $lelangs = lelang::all();
+        return view('welcome', compact('barangs', 'lelangs', 'users'));
     }
 
     /**
