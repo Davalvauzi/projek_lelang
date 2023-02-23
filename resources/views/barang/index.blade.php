@@ -8,13 +8,13 @@
 
 <div class="card">
   <div class="card-header d-flex justify-content-between mb-3">
-    @if (auth()->user()->level === 'admin')
+    {{-- @if (auth()->user()->level === 'admin') --}}
     <a href="/barang/create" class="btn btn-primary">Tambah Barang</a>
-    @endif
+    {{-- @endif --}}
   </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="example2" class="table table-bordered table-hover" class="datatable">
+      <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>NO</th>
@@ -39,21 +39,21 @@
                         <i class="far fa-eye"></i>
                       Detail
                     </a>
-                    @if (auth()->user()->level === 'admin')
+                    {{-- @if (auth()->user()->level === 'admin') --}}
                     <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">
                       <i class="fas fa-edit"></i>
                       Edit
                     </a>
-                    @endif
+                    {{-- @endif --}}
                     
                     @csrf
                     @method('DELETE')
-                    @if (auth()->user()->level === 'admin')
+                    {{-- @if (auth()->user()->level === 'admin') --}}
                     <button type="submit" value="Delete" class="btn btn-danger">
                       <i class="fas fa-trash"></i>
                       hapus
                     </button>
-                    @endif
+                    {{-- @endif --}}
                   </form>
                   </div>
                 </td>
@@ -93,4 +93,22 @@
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 @endpush

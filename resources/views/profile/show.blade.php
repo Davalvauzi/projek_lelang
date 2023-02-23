@@ -43,7 +43,7 @@
           @if ($barangs->image)
           <div class="form-group">
             <label for="foto_barang">Foto Barang</label>
-            <div style="max-height: 350px; overflow:hidden">  
+            <div style="max-height: 350px; ">  
               <img src="{{ asset('storage/' . $barangs->image) }}" alt="{{ $barangs->image }}" class="img-fluid mt-3">
             </div>
           </div>

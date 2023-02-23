@@ -108,6 +108,7 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'tanggal' => 'required',
             'harga_awal' => 'required',
+            'image' => 'image|file',
             'deskripsi_barang' => 'required'
         ]);
 
@@ -116,6 +117,7 @@ class BarangController extends Controller
         $barangs->tanggal = $request->tanggal;
         $barangs->harga_awal = $request->harga_awal;
         $barangs->deskripsi_barang = $request->deskripsi_barang;
+        $barangs->image = $request->image;
         $barangs->update();
 
         return redirect('/barang');

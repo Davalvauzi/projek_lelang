@@ -6,7 +6,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Judul</h3>
+        <h3 class="card-title"><strong>Dashboard</strong></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -25,12 +25,12 @@
             <div class="inner">
             <h3>{{ $jumlahbarang }}</h3>
             
-            <p>New Orders</p>
+            <p>Jumlah Barang</p>
           </div>
           <div class="icon">
             <i class="fas fa-shopping-cart"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/barang" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -42,12 +42,12 @@
             <div class="inner">
               <h3>{{ $jumlahuser }}</h3>
               
-              <p>User Registrations</p>
+              <p>Jumlah User</p>
             </div>
             <div class="icon">
-              <i class="fas fa-user-plus"></i>
+              <i class="fas fa-user"></i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="/user" class="small-box-footer">
               More info <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -57,7 +57,7 @@
       
       <!-- /.card-body -->
       <div class="card-footer">
-        Footer
+        
       </div>
       <!-- /.card-footer-->
     </div>

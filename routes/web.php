@@ -6,6 +6,7 @@ use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LelangController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ListlelangController;
 
@@ -25,6 +26,8 @@ route::get('/', [usercontroller::class, 'home'])->name('home');
 route::get('/', [usercontroller::class, 'home'])->name('home');
 
 route::resource('lelang', LelangController::class);
+
+// route::resource('profile', ProfileController::class);
 
 route::resource('listlelang', ListlelangController::class);
 
@@ -67,6 +70,18 @@ route::middleware(['auth', 'level:admin,petugas'])->group(function () {
     });
 });
 
+// route petugas dan masyarakat
+route::middleware(['auth', 'level:petugas,masyarakat'])->group(function () {
+    route::controller(ProfileController::class)->group(function () {
+        route::get('profile', 'index')->name('profile.index');
+        route::get('profile/create', 'create')->name('profile.create');
+        route::post('profile', 'store')->name('profile.store');
+        route::get('profile/{profile}', 'show')->name('profile.show');
+        route::get('profile/{profile}/edit', 'edit')->name('profile.edit');
+        route::put('profile/{profile}', 'update')->name('profile.update');
+        route::delete('profile/{profile}', 'destroy')->name('profile.destroy');
+    });
+});
 
 // middleware only admin    
 route::middleware(['auth', 'level:admin'])->group(function () {

@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Data Lelang</h1>
+<h1>List Lelang</h1>
 @endsection
 
 @section('content')

@@ -15,10 +15,10 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('barangs_id')->constrained('barangs');
-            $table->foreignId('lelangs_id')->constrained('lelangs');
-            $table->foreignId('users_id')->constrained('users');
-            $table->string('penawaran_harga', 20);
+            $table->foreignId('barangs_id')->constrained();
+            $table->foreignId('users_id')->constrained();
+            $table->foreignId('lelang_id')->constrained();
+            $table->string('harga_penawaran', 20);
             $table->timestamps();
         });
     }

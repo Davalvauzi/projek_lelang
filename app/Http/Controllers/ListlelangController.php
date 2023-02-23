@@ -18,7 +18,7 @@ class ListlelangController extends Controller
     {
         //
         $lelangs = lelang::all();
-        return view('lelang.index', compact('lelangs'));
+        return view('listlelang.index', compact('lelangs'));
     }
     public function penawaran()
     {
