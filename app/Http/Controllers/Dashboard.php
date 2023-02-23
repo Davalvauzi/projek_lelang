@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\barang;
+use App\Models\lelang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,6 +27,7 @@ class Dashboard extends Controller
 
     public function masyarakat()
     {
-        return view('dashboard.masyarakat');
+        $lelangs = lelang::all();
+        return view('listlelang.index', compact('lelangs'));
     }
 }

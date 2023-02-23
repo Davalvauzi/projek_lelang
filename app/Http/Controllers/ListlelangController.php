@@ -38,7 +38,7 @@ class ListlelangController extends Controller
             ->whereNotIn('id', function ($query) {
                 $query->select('barangs_id')->from('lelangs');
             })->get();
-        return view('lelang.create', compact('barangs'));
+        return view('listlelang.create', compact('barangs'));
     }
 
     /**
@@ -80,10 +80,11 @@ class ListlelangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(lelang $lelang)
     {
         //
-
+        $lelangs = lelang::find($lelang->id);
+        return view('lelang.show', compact('lelangs'));
     }
 
     /**

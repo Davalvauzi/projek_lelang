@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
-  {{-- <style>
+  <style>
     body {
-      background-image: url("{{ asset('img/agir.jpg') }}");
+      background-image: url("{{ asset('img/gunung.jpg') }}");
       height: 100%;
       background-position: center;
       background-repeat: no-repeat;
@@ -24,7 +24,7 @@
     .register-box{
       background-color: aqua;
     }
-  </style> --}}
+  </style>
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">

@@ -70,9 +70,23 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, user $user)
     {
         //
+        $request->validate([
+            'name',
+            'username',
+            'alamat',
+            'minat',
+        ]);
+
+        $users = user::find($user->id);
+        $users->name = $request->name;
+        $users->username = $request->username;
+        $users->alamat = $request->alamat;
+        $users->minat = $request->minat;
+
+        return redirect('/profile');
     }
 
     /**

@@ -21,7 +21,6 @@
           <th>Nama Barang</th>
           <th>Harga awal</th>
           <th>Tanggal</th>
-          <th>Harga Akhir</th>
           <th>Status</th>
           @if (auth()->user()->level == 'petugas')
           <th><center>Action</center></th>
@@ -35,7 +34,6 @@
             <td >{{ $loop -> iteration }}</td>
             <td >{{ $lelang->barang->nama_barang }}</td>
             <td >@currency ($lelang->barang->harga_awal)  </td>
-            <td >@currency ($lelang->harga_akhir ) </td>
             <td >{{ \Carbon\Carbon::parse($lelang->tanggal)->format('j-F-Y') }}</td>
               <td>
                 <span class="badge {{ $lelang->status == 'ditutup' ? 'bg-danger' : 'bg-success'  }}">{{ Str::title($lelang->status) }}</span>
@@ -44,7 +42,7 @@
                   @if (auth()->user()->level == 'petugas') 
                   <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                     <form action="/lelang/{{ $lelang->id }}" method="POST">
-                      <a class="btn btn-info mr-3" href="/lelang{{ $lelang->id }}">Detail</a>
+                      <a class="btn btn-info mr-3" href="/lelang/{{ $lelang->id }}">Detail</a>
                     <a class="btn btn-warning mr-3" href="/lelang{{ $lelang->id }}">Edit</a>
                     
                     @csrf
@@ -65,6 +63,7 @@
         </table>
     </div>
     <!-- /.card-body -->
+</div>
 
 @endsection
 

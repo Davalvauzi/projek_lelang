@@ -25,7 +25,7 @@ route::get('/', [usercontroller::class, 'home'])->name('home');
 
 route::get('/', [usercontroller::class, 'home'])->name('home');
 
-route::resource('lelang', LelangController::class);
+// route::resource('lelang', LelangController::class);
 
 // route::resource('profile', ProfileController::class);
 
@@ -110,5 +110,11 @@ route::middleware(['auth', 'level:petugas'])->group(function () {
 route::middleware(['auth', 'level:masyarakat'])->group(function () {
     route::controller(ListlelangController::class)->group(function () {
         route::get('listlelang', 'index')->name('listlelang.index');
+        route::get('listlelang/create', 'create')->name('listlelang.create');
+        route::post('listlelang', 'store')->name('listlelang.store');
+        route::get('listlelang/{listlelang}', 'show')->name('listlelang.show');
+        route::get('listlelang/{listlelang}/edit', 'edit')->name('listlelang.edit');
+        route::put('listlelang/{listlelang}', 'update')->name('listlelang.update');
+        route::delete('listlelang/{listlelang}', 'destroy')->name('listlelang.create');
     });
 });
