@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')    
-<h1>Halaman Create</h1>
+<h1>Detail Barang Lelang</h1>
 @endsection
 
 @section('isi')

@@ -25,7 +25,7 @@
         <a href="dashboard/admin" class="brand-link">
           <img src="{{ asset('img/ikan-kodok.png') }}" alt="Logo Dafa" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">
-            {{ Auth::user()->name }}
+            {{ Auth::user()->username }}
           </span>
         </a>
     @endif
@@ -33,7 +33,7 @@
         <a href="" class="brand-link">
           <img src="{{ asset('img/ikan-kodok.png') }}" alt="Logo Dafa" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">
-            {{ Auth::user()->name }}
+            {{ Auth::user()->username }}
           </span>
         </a>
     @endif
@@ -41,7 +41,7 @@
         <a href="" class="brand-link">
           <img src="{{ asset('img/ikan-kodok.png') }}" alt="Logo Dafa" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">
-            {{ Auth::user()->name }}
+            {{ Auth::user()->username }}
           </span>
         </a>
     @endif

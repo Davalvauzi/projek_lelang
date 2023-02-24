@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\lelang;
 use App\Models\barang;
+use App\Models\history;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class ListlelangController extends Controller
 {
@@ -31,14 +33,12 @@ class ListlelangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(lelang $lelang, history $history)
     {
         //
-        $barangs = barang::select('id', 'nama_barang', 'harga_awal')
-            ->whereNotIn('id', function ($query) {
-                $query->select('barangs_id')->from('lelangs');
-            })->get();
-        return view('listlelang.create', compact('barangs'));
+        $lelangs = lelang::find($lelang->id);
+        $history = history::all();
+        return view('listlelang.create', compact('lelangs', 'history'));
     }
 
     /**
@@ -47,31 +47,24 @@ class ListlelangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, history $history, lelang $lelang, barang $barang)
+
     {
         //
         $request->validate([
-            'barangs_id' => 'required|exists:barangs,id|unique:lelangs,barangs_id',
-            'tanggal' => 'required|date',
-            'harga_akhir' => 'required|numeric'
+            'harga_penawaran' => 'required|numeric'
         ], [
-            'barang_id.required' => 'Barang Harus Diisi',
-            'barang_id.exists' => 'Barang Tidak Ada Pada Data Barang',
-            'barang_id.unique' => 'Barang Sudah Ada',
-            'tanggal.required' => 'Tanggal Lelang Harus Diisi',
-            'tanggal.date' => 'Tanggal Lelang Harus Berupa Tanggal',
-            'harga_akhir.required' => 'Harga Akhir Harus Diisi',
-            'harga_akhir.numeric' => 'Harga Akhir Harus Harus Berupa Angka',
+            'harga_penawarn.required' => 'harga penawran Harus Diisi',
+            'harga_penawarn.exists' => 'harga penawran harus angka'
         ]);
-        $lelang = new lelang;
-        $lelang->barangs_id = $request->barangs_id;
-        $lelang->tanggal = $request->tanggal;
-        $lelang->harga_akhir = $request->harga_akhir;
-        $lelang->users_id = Auth::user()->id;
-        $lelang->status = 'dibuka';
-        $lelang->save();
+        $history = new history();
+        $history->lelang_id = $lelang->id;
+        $history->users_id = Auth::user()->id;
+        $history->harga = $request->harga_penawaran;
+        $history->status = 'pending';
+        $history->save();
 
-        return redirect('petugas/lelang');
+        return redirect('listlelang.index', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini');
     }
 
     /**

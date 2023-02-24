@@ -53,7 +53,7 @@
            </div>
          </div>
          <!-- /.card-body -->
-       </form>
+       {{-- </form> --}}
    </div>
  </div>
 @endsection

@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'admin',
                 'username' => 'dafa',
                 'password' => bcrypt('dafa'),
+                'repassword' => ('dafa'),
                 'level' => 'admin',
                 'telepon' => '085890012923'
 
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
                 'name' => 'petugas',
                 'username' => 'petugas',
                 'password' => bcrypt('petugas'),
+                'repassword' => ('petugas'),
                 'level' => 'petugas',
                 'telepon' => '081234567890'
             ],
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
                 'name' => 'masyarakat',
                 'username' => 'masyarakat',
                 'password' => bcrypt('masyarakat'),
+                'repassword' => ('masyarakat'),
                 'level' => 'masyarakat',
                 'telepon' => '081234567891'
             ]

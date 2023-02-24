@@ -51,7 +51,7 @@
           @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus class="form-control @error('username') is-invalid @enderror" placeholder="Username anda">
+          <input type="text" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus class="form-control @error('username') is-invalid @enderror" placeholder="Username anda">
           <div class="input-group-append">
             <div class="input-group-text">
               
@@ -64,7 +64,7 @@
           @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="telepon" value="{{ old('telepon') }}" required autocomplete="name" autofocus class="form-control @error('telepon') is-invalid
+          <input type="text" name="telepon" value="{{ old('telepon') }}" required autocomplete="telepon" autofocus class="form-control @error('telepon') is-invalid
           @enderror" placeholder="Nomor telepon anda">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -78,12 +78,25 @@
           @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" value="{{ old('name') }}" required autocomplete="name" autofocus class="form-control @error('password') is-invalid @enderror"  placeholder="Password anda">
+          <input type="password" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus class="form-control @error('password') is-invalid @enderror"  placeholder="Password anda">
           <div class="input-group-append">
             <div class="input-group-text">
               
             </div>
             @error('password')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+          @enderror
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="repassword" value="{{ old('repassword') }}" required autocomplete="repassword" autofocus class="form-control @error('repassword') is-invalid @enderror"  placeholder="Ketik ulang Password anda">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              
+            </div>
+            @error('repassword')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>

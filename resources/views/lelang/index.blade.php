@@ -9,7 +9,7 @@
 <div class="card">
   @if (auth()->user()->level == 'petugas')
     <div class="card-header d-flex justify-content-between mb-3">
-      <a href="/lelang/create" class="btn btn-primary">Tambah Lelang</a>
+      <a href="{{ route('lelang.create') }}" class="btn btn-primary">Tambah Lelang</a>
     </div>
   @endif
     <!-- /.card-header -->

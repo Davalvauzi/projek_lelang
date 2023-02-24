@@ -23,8 +23,43 @@
 
                       <h5 class="text-muted text-center">@currency($item->barang->harga_awal)</h5>
 
-                      <a href="{{ route('listlelang.create', $item->id) }}"
-                          class="btn btn-success btn-block"><b>Tawar</b></a>
+                      <a href="{{ route('listlelang.show', $item->id) }}"
+                        class="btn btn-info btn-block"><b>Detail Barang</b></a>
+                      
+                      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"> 
+                          Tawar Barang
+                      </button>
+
+                      <form action="{{ route('listlelang.store', $lelangs->id) }}" method="POST" class="form-horizontal">
+                        <div class="modal" id="myModal">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+            
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title"><center> Masukan Nominal Penawaran</center></h4>
+                                </div>
+            
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <div class="form-group">
+                                      <label for="harga_penawaran">Masukan Nominal</label>
+                                      <input type="text" name="harga_penawaran" class="form-control" id="harga_penawaran">
+                                    </div>
+                                  </div>
+                                </div>
+            
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-primary justify-content-start" data-dismiss="modal">Submit</button>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </form>
+
                   </div>
                   <!-- /.card-body -->
               </div>
@@ -35,6 +70,16 @@
 </section>
 
 @endsection
+
+@push('skrip')
+<script>
+  $(document).ready(function () {
+    $('#modal').click(function () {
+      $('#ModalTawar').modal('show');
+    });
+  });
+</script>
+@endpush
 
 {{-- @push('skrip')
 
