@@ -24,12 +24,23 @@ class Dashboard extends Controller
 
     public function petugas()
     {
-        return view('dashboard.petugas');
+        $barangs = db::table('barangs')->count();
+        $users = db::table('users')->count();
+        $count = User::all()->count();
+        $count = barang::all()->count();
+        $count = lelang::all()->count();
+        $lelangs = lelang::all();
+        return view('dashboard.petugas', compact('barangs', 'users', 'lelangs'))->with(['jumlahbarang' => $barangs, 'jumlahuser' => $users]);
     }
 
     public function masyarakat()
     {
+        $barangs = db::table('barangs')->count();
+        $users = db::table('users')->count();
+        $count = User::all()->count();
+        $count = barang::all()->count();
+        $count = lelang::all()->count();
         $lelangs = lelang::all();
-        return view('listlelang.index', compact('lelangs'));
+        return view('dashboard.masyarakat', compact('barangs', 'users', 'lelangs'))->with(['jumlahbarang' => $barangs, 'jumlahuser' => $users]);
     }
 }

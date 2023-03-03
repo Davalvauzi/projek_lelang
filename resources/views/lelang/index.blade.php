@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-<h1>Data Lelang</h1>
+<h1>Info Lelang</h1>
 @endsection
 
 @section('content')
@@ -27,9 +27,7 @@
           <th>Harga awal</th>
           <th>Tanggal</th>
           <th>Status</th>
-          @if (auth()->user()->level == 'petugas')
           <th><center>Action</center></th>
-          @endif
           </tr>
         </thead>
         <tbody>
@@ -44,17 +42,9 @@
                 <span class="badge {{ $lelang->status == 'ditutup' ? 'bg-danger' : 'bg-success'  }}">{{ Str::title($lelang->status) }}</span>
               </td>
               <td>
-                  @if (auth()->user()->level == 'petugas') 
-                  <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
-                    <form action="/lelang/{{ $lelang->id }}" method="POST">
-                      <a class="btn btn-info mr-3" href="/lelang/{{ $lelang->id }}">Detail</a>
-                    <a class="btn btn-warning mr-3" href="/lelang{{ $lelang->id }}">Edit</a>
-                    
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                  </form>
-                  </div>  
+                  <a class="btn btn-primary mr-3" href="/lelang/{{ $lelang->id }}">Detail</a>
+                  @if (auth()->user()->level == 'masyarakat')
+                  <a class="btn btn-warning mr-3" href="/lelang{{ $lelang->id }}">Tawar</a>
                   @endif
               </td>
             </tr>
