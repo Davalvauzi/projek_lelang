@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -39,6 +40,15 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+        $data = request()->validate([
+            'alamat'
+        ]);
+
+        User::create([
+            'alamat' => ($data['alamat'])
+        ]);
+
+        return redirect('/profile');
     }
 
     /**
@@ -58,9 +68,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(user $user)
     {
         //
+        $users = user::find($user->id);
+        return view('profile.index', compact('users'));
     }
 
     /**
@@ -77,14 +89,15 @@ class ProfileController extends Controller
             'name',
             'username',
             'alamat',
-            'minat',
+            'telepon'
         ]);
 
         $users = user::find($user->id);
         $users->name = $request->name;
         $users->username = $request->username;
+        $users->telepon = $request->telepon;
         $users->alamat = $request->alamat;
-        $users->minat = $request->minat;
+        $users->update();
 
         return redirect('/profile');
     }

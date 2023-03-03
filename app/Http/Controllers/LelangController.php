@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\lelang;
-use App\Models\barang;
+use App\Models\{
+    barang,
+    lelang,
+    history
+};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -116,5 +119,18 @@ class LelangController extends Controller
         //
         $lelangs = lelang::select('id', 'barangs_id', 'tanggal', 'harga_akhir', 'status')->get();
         return view('listlelang.index', compact('lelangs'));
+    }
+
+    public function listlelang(lelang $lelang)
+    {
+        // dd($lelang);
+        $lelangs = lelang::find($lelang->id);
+        return view('listlelang.show', compact('lelangs'));
+    }
+
+    public function tawar(lelang $lelang)
+    {
+        $lelang = lelang::find($lelang->id);
+        return view('listlelang.create', compact('lelangs'));
     }
 }

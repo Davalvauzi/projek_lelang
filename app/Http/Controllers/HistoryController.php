@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\history;
+use App\Models\lelang;
+use Illuminate\Support\Facades\auth;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
@@ -22,9 +24,12 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(history $history, lelang $lelang)
     {
         //
+        $lelangs = lelang::find($lelang->id);
+        $history = history::orderBy('harga', 'desc')->get()->where('lelang_id', $lelangs->id);
+        return view('listlelang.index', compact('lelangs', 'histories'));
     }
 
     /**

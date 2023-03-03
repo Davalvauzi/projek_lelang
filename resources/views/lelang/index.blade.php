@@ -12,6 +12,11 @@
       <a href="{{ route('lelang.create') }}" class="btn btn-primary">Tambah Lelang</a>
     </div>
   @endif
+  @if (auth()->user()->level == 'admin')
+    <div class="card-header d-flex justify-content-between mb-3">
+      <a href="{{ route('lelang.create') }}" class="btn btn-primary">Tambah Lelang</a>
+    </div>
+  @endif
     <!-- /.card-header -->
     <div class="card-body">
       <table id="example2" class="table table-bordered table-hover" class="datatable">

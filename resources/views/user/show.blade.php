@@ -39,8 +39,8 @@
               <input type="text" name="username" class="form-control" value="{{$users->username}}" disabled>
             </div>
             <div class="col-md-6 col-12">
-              <label for="password">Password</label>
-              <input type="text" name="password" class="form-control" value="{{$users->password}}" disabled>
+              <label for="repassword">Password</label>
+              <input type="text" name="repassword" class="form-control" value="{{$users->repassword}}" disabled>
             </div>
           </div>
         </div>

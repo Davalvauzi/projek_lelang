@@ -31,7 +31,7 @@ class LoginController extends Controller
             } else if ($user->level == 'petugas') {
                 return redirect()->route('dashboard.petugas');
             } else if ($user->level == 'masyarakat') {
-                return redirect()->route('listlelang.index');
+                return redirect()->route('dashboard.masyarakat');
             } else {
                 return redirect()->route('login');
             }

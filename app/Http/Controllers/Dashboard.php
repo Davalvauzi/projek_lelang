@@ -17,7 +17,9 @@ class Dashboard extends Controller
         $users = db::table('users')->count();
         $count = User::all()->count();
         $count = barang::all()->count();
-        return view('dashboard.admin', compact('barangs', 'users'))->with(['jumlahbarang' => $barangs, 'jumlahuser' => $users]);
+        $count = lelang::all()->count();
+        $lelangs = lelang::all();
+        return view('dashboard.admin', compact('barangs', 'users', 'lelangs'))->with(['jumlahbarang' => $barangs, 'jumlahuser' => $users]);
     }
 
     public function petugas()

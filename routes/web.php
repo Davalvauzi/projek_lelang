@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LelangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -27,7 +28,11 @@ route::resource('lelang', LelangController::class);
 
 // route::resource('profile', ProfileController::class);
 
+route::resource('history', HistoryController::class);
+
 route::resource('listlelang', ListlelangController::class);
+
+// route::get('listlelang', [LelangController::class, 'listlelangindex'])->name('listlelang.index');
 
 // route::resource('barang', BarangController::class);
 
@@ -61,8 +66,12 @@ route::middleware(['auth', 'level:admin,petugas'])->group(function () {
         route::put('barang/{barang}', 'update')->name('barang.update');
         route::delete('barang/{barang}', 'destroy')->name('barang.destroy');
     });
+});
+
+route::middleware(['auth', 'level:admin,petugas,masyarakat'])->group(function () {
     route::controller(LelangController::class)->group(function () {
         route::get('lelang', 'index')->name('lelang.index');
+        route::get('lelang/create', 'tawar')->name('lelang.tawar');
         route::get('lelang/{lelang}', 'show')->name('lelang.show');
         route::put('lelang/{lelang}', 'update')->name('lelang.update');
     });
@@ -76,7 +85,7 @@ route::middleware(['auth', 'level:petugas,masyarakat'])->group(function () {
         route::post('profile', 'store')->name('profile.store');
         route::get('profile/{profile}', 'show')->name('profile.show');
         route::get('profile/{profile}/edit', 'edit')->name('profile.edit');
-        route::put('profile/{profile}', 'update')->name('profile.update');
+        route::put('profile', 'update')->name('profile.update');
         route::delete('profile/{profile}', 'destroy')->name('profile.destroy');
     });
 });
@@ -106,13 +115,7 @@ route::middleware(['auth', 'level:admin'])->group(function () {
 
 // middleware only masyarakat
 route::middleware(['auth', 'level:masyarakat'])->group(function () {
-    route::controller(ListlelangController::class)->group(function () {
-        route::get('listlelang', 'index')->name('listlelang.index');
-        route::get('listlelang/{listlelang}', 'create')->name('listlelang.create');
-        route::post('listlelang', 'store')->name('listlelang.store');
-        route::get('listlelang/{listlelang}', 'show')->name('listlelang.show');
-        route::get('listlelang/{listlelang}/edit', 'edit')->name('listlelang.edit');
-        route::put('listlelang/{listlelang}', 'update')->name('listlelang.update');
-        route::delete('listlelang/{listlelang}', 'destroy')->name('listlelang.create');
+    route::controller(LelangController::class)->group(function () {
+        route::get('/listlelang', 'listlelang')->name('listlelang-index');
     });
 });

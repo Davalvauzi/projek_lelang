@@ -11,7 +11,7 @@ use App\Models\user;
 class history extends Model
 {
     use HasFactory;
-    protected $table = 'history';
+    protected $table = 'histories';
     protected $fillable =
     [
         'lelangs_id',

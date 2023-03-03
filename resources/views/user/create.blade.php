@@ -19,14 +19,45 @@
         <div class="row">
           <div class="col-md-6 col-12">
             <div class="form-group">
-              <label for="Username">Username</label>
-              <input type="text" name="username" class="form-control" id="username">
+              <label for="name">Name</label>
+              <input type="name" name="name" class="form-control" id="name">
             </div>
           </div>
           <div class="col-md-6 col-12">
             <div class="form-group">
-              <label for="Password">Password</label>
+              <label for="Username">Username</label>
+              <input type="text" name="username" class="form-control" id="username">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="password">Password</label>
               <input type="password" name="password" class="form-control" id="password">
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="repassword">Ketik Ulang Password anda</label>
+              <input type="repassword" name="repassword" class="form-control" id="repassword">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <label for="telepon">Nomor Telepon</label>
+            <input type="telepon" name="telepon" class="form-control" id="telepon">
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="level">Otoritas</label>
+                  <select name="level" id="level" class="form-select form-control" data-parsley-required>
+                    <option value="" disabled><strong>PILIH ROLE</strong></option>
+                    <option value="masyarakat">Masyarakat</option>
+                    <option value="petugas">Petugas</option>
+                    <option value="petugas">Admin</option>
+                  </select>
             </div>
           </div>
         </div>
@@ -35,7 +66,7 @@
               <button type="submit" class="btn btn-primary">Submit</button> 
             </div>
             <div class="col-md-6 d-flex justify-content-end">
-              <a href="/barang" class="btn btn-outline-info">
+              <a href="/user" class="btn btn-outline-info">
                 Kembali
               </a>
             </div>

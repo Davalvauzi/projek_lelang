@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('repassword');
             $table->string('telepon', 13)->nullable();
             $table->string('alamat')->nullable();
-            $table->string('minat')->nullable();
+            $table->string('profile')->nullable();
             $table->enum('level', ['admin', 'petugas', 'masyarakat']);
             $table->rememberToken();
             $table->timestamps();

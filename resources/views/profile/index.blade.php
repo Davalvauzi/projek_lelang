@@ -6,74 +6,6 @@
 
 @section('content')
 
-{{-- <div class="card">
-  <div class="card-header d-flex justify-content-between mb-3">
-    @if (auth()->user()->level === 'admin')
-    <a href="/barang/create" class="btn btn-primary">Tambah Barang</a>
-    @endif
-    <h3><center>Edit Profile User</center></h3>
-  </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <table id="example1" class="table table-bordered table-striped">
-        <thead>
-        <tr>
-          <th>NO</th>
-          <th>Nama Barang</th>
-          <th>Tanggal</th>
-          <th>Harga Awal</th>
-          <th><center>Actions</center></th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr>
-          @forelse ($users as $barang) 
-          <tr>
-            <td >{{ $loop -> iteration }}</td>
-                <td>{{ $barang->nama_barang }}</td>
-                <td>{{ $barang->tanggal }}</td>
-                <td>@currency ( $barang->harga_awal) </td>
-                <td>
-                  <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
-                  <form action="{{asset('barang.destroy', $barang->id)}}" method="POST">
-                    <a class="btn btn-info mr-3" href="{{route('barang.show', $barang->id)}}">
-                        <i class="far fa-eye"></i>
-                      Detail
-                    </a>
-                    @if (auth()->user()->level === 'admin')
-                    <a class="btn btn-warning mr-3" href="{{route('barang.edit', $barang->id)}}">
-                      <i class="fas fa-edit"></i>
-                      Edit
-                    </a>
-                    @endif
-                    
-                    @csrf
-                    @method('DELETE')
-                    @if (auth()->user()->level === 'admin')
-                    <button type="submit" value="Delete" class="btn btn-danger">
-                      <i class="fas fa-trash"></i>
-                      hapus
-                    </button>
-                    @endif
-                  </form>
-                  </div>
-                </td>
-              </tr>
-            </tr>
-            @empty
-            <tr>
-              <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang Kosong</strong></td>
-            </tr>
-            @endforelse ($barangs as $barang)
-        </tbody>
-        </table>
-    </div>
-    <!-- /.card-body -->
-</div> --}}
-
-  <!-- Main content -->
-  {{-- @forelse ($users as $item) --}}
-      
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -116,26 +48,39 @@
             <div class="card-body">
               <div class="tab-content">
                 <div class="active tab-pane" id="activity">
-                  <strong><i class="fas fa-book mr-1"></i> Minat</strong>
+                  <strong><i class="fas fa-user mr-1"></i> Nama </strong>
 
                   <p class="text-muted">
-                    {{ auth::user()->minat }}
+                    <strong> nama : </strong>{{ auth::user()->name }}
+                    <br>
+                    <strong> username : </strong>{{ auth::user()->username }}
                   </p>
     
                   <hr>
     
-                  <strong><i class="fas fa-map-marker-alt mrd-1"></i> Location</strong>
+                  <strong><i class="fas fa-phone"></i> No Telepon</strong>
+
+                  <p class="text-muted">
+                    <strong> No Telepon :</strong> {{ auth::user()->telepon }}
+                  </p>
+    
+                  <hr>
+
+                  <strong><i class="fas fa-map-marker-alt mrd-1"></i> Alamat</strong>
     
                   <p class="text-muted">
-                    {{ auth::user()->alamat }}
+                   <strong> lokasi :</strong> {{ auth::user()->alamat }}
                   </p>
     
                   <hr>
-    
+
                   <!-- /.post -->
                 </div>
                 <!-- /.tab-pane -->
-
+                
+                <form action="{{ route('profile.update', [$users->id]) }}" method="POST">
+                  @csrf
+                  @method('PUT')
                 <div class="tab-pane" id="settings">
                   <form class="form-horizontal">
                     <div class="form-group row">
@@ -151,18 +96,25 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                      <label for="telepon" class="col-sm-2 col-form-label">No Telepon</label>
                       <div class="col-sm-10">
-                        <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat Kamu"></textarea>
+                        <input type="email" name="telepon" class="form-control" id="telepon" placeholder="telepon">
                       </div>
                     </div>
+                      <div class="form-group row">
+                        <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat Kamu"></textarea>
+                        </div>
+                      </div>
                     <div class="form-group row">
                       <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
+                        <button type="submit" class="btn btn-warning">Submit</button>
                       </div>
                     </div>
                   </form>
                 </div>
+                </form>
                 <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->
@@ -181,45 +133,3 @@
   <!-- /.content -->
 
 @endsection
-
-@push('skrip')
-<!-- jQuery -->
-<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
-
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-@endpush
