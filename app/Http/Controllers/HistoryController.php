@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\history;
 use App\Models\lelang;
+use App\Models\barang;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,6 @@ class HistoryController extends Controller
     public function create(history $history, lelang $lelang)
     {
         //
-        $lelangs = lelang::find($lelang->id);
-        $history = history::orderBy('harga', 'desc')->get()->where('lelang_id', $lelangs->id);
-        return view('listlelang.index', compact('lelangs', 'histories'));
     }
 
     /**
@@ -38,9 +36,27 @@ class HistoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, history $history, lelang $lelang, barang $barang)
     {
         //
+        $validateData = $request->validate(
+            [
+                'harga_penawaran' => 'required',
+            ],
+            [
+                'harga_penawaran.required' => 'Harga Penawaran Harus Diisi'
+            ]
+        );
+
+        $historie = new history();
+        $historie->lelang_id = $lelang->id;
+        $historie->users_id = auth::user()->id;
+        $historie->barang_id = $lelang->barang->id;
+        $historie->harga_penawaran = $request->harga_penawaran;
+        $historie->status = 'pending';
+        $historie->save();
+
+        return redirect()->route('tawar', $lelang->id)->with('success', 'Penawaran Anda Tercatat')->with('ucapan');
     }
 
     /**

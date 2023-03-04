@@ -44,7 +44,7 @@
               <td>
                   <a class="btn btn-primary mr-3" href="/lelang/{{ $lelang->id }}">Detail</a>
                   @if (auth()->user()->level == 'masyarakat')
-                  <a class="btn btn-warning mr-3" href="/lelang{{ $lelang->id }}">Tawar</a>
+                  <a class="btn btn-warning mr-3" href="{{ route('tawar', $lelang->id) }}">Tawar</a>
                   @endif
               </td>
             </tr>

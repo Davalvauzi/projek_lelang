@@ -78,9 +78,9 @@
                 </div>
                 <!-- /.tab-pane -->
                 
-                <form action="{{ route('profile.update', [$users->id]) }}" method="POST">
+                {{-- <form action="{{ route('profile.update', [$users->id]) }}" method="POST">
                   @csrf
-                  @method('PUT')
+                  @method('PUT') --}}
                 <div class="tab-pane" id="settings">
                   <form class="form-horizontal">
                     <div class="form-group row">
@@ -112,7 +112,7 @@
                         <button type="submit" class="btn btn-warning">Submit</button>
                       </div>
                     </div>
-                  </form>
+                  </form> 
                 </div>
                 </form>
                 <!-- /.tab-pane -->

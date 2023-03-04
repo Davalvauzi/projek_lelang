@@ -38,9 +38,7 @@ class usercontroller extends Controller
     {
         //
         $users = user::all();
-        $barangs = barang::all();
-        $lelangs = lelang::all();
-        return view('welcome', compact('barangs', 'lelangs', 'users'));
+        view('template.sidebar', compact('users'));
     }
 
     /**
@@ -145,5 +143,29 @@ class usercontroller extends Controller
         $users = user::find($user->id);
         $users->delete();
         return redirect('user');
+    }
+
+    public function profile(user $user)
+    {
+        // 
+        $users = User::all();
+        return view('profile.index', compact('users'));
+    }
+
+    public function editprofile(user $user, Request $request)
+    {
+        // $request->validate([
+        //     'username' => 'required',
+        //     'level' => 'required'
+        // ]);
+
+        $users = user::find($user->id);
+        $users->name = $request->name;
+        $users->username = $request->username;
+        $users->telepon = $request->telepon;
+        $users->alamat = $request->alamat;
+        $users->update();
+
+        return redirect('/user');
     }
 }

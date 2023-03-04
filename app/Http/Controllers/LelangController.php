@@ -117,8 +117,6 @@ class LelangController extends Controller
     public function destroy(lelang $lelang)
     {
         //
-        $lelangs = lelang::select('id', 'barangs_id', 'tanggal', 'harga_akhir', 'status')->get();
-        return view('listlelang.index', compact('lelangs'));
     }
 
     public function listlelang(lelang $lelang)
@@ -128,9 +126,10 @@ class LelangController extends Controller
         return view('listlelang.show', compact('lelangs'));
     }
 
-    public function tawar(lelang $lelang)
+    public function tawar(lelang $lelang, history $history)
     {
-        $lelang = lelang::find($lelang->id);
-        return view('listlelang.create', compact('lelangs'));
+        $histories = history::all();
+        $lelangs = lelang::all();
+        return view('listlelang.create', compact('lelangs', 'histories'));
     }
 }

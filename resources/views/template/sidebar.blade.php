@@ -71,17 +71,7 @@
                with font-awesome or any other icon font library -->
                @if (auth()->user()->level == 'masyarakat')  
                <li class="nav-item">
-                 <a href="{{ route('profile.index') }}" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Profile
-                  </p>
-                </a>
-              </li>
-              @endif
-              @if (auth()->user()->level == 'petugas')  
-               <li class="nav-item">
-                 <a href="{{ route('profile.index') }}" class="nav-link">
+                 <a href="/profile" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                     Profile
