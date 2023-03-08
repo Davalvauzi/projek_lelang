@@ -55,4 +55,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(history::class);
     }
+
+    public function lelang()
+    {
+        return $this->belongsTo(lelang::class);
+    }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
+    }
 }

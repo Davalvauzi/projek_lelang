@@ -15,10 +15,12 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('lelang_id');
-            $table->foreignId('lelangs_id')->references('id')->on('lelangs')->onDelete('cascade')->constrained();
-            $table->unsignedBigInteger('users');
-            $table->foreignId('users_id')->references('id')->on('lelangs')->onDelete('cascade')->constrained();
+            // $table->unsignedBigInteger('lelangs_id');
+            $table->foreignId('lelangs_id')->references('id')->on('lelangs');
+            // $table->unsignedBigInteger('barangs_id');
+            $table->foreignId('barangs_id')->references('id')->on('barangs');
+            // $table->unsignedBigInteger('users_id');
+            $table->foreignId('users_id')->references('id')->on('users');
             $table->string('harga_penawaran', 20);
             $table->enum('status', ['pending', 'gugur', 'pemenang']);
             $table->timestamps();

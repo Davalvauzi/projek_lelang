@@ -126,10 +126,10 @@ class LelangController extends Controller
         return view('listlelang.show', compact('lelangs'));
     }
 
-    public function tawar(lelang $lelang, history $history)
-    {
-        $histories = history::all();
-        $lelangs = lelang::all();
-        return view('listlelang.create', compact('lelangs', 'histories'));
-    }
+    // public function tawar(lelang $lelang, history $history)
+    // {
+    //     $histories = history::all();
+    //     $lelangs = lelang::find($lelang->id);
+    //     return view('listlelang.create', compact('lelangs', 'histories'));
+    // }
 }

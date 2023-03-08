@@ -40,14 +40,18 @@
             <label for="deskripsi_barang">Deskripsi Barang Anda</label>
             <input type="text" name="deskripsi_barang" class="form-control"  value="{{$barangs->deskripsi_barang}}" disabled>
         </div>
-          @if ($barangs->image)
-          <div class="form-group">
-            <label for="foto_barang">Foto Barang</label>
-            <div style="max-height: 350px; overflow:hidden">  
-              <img src="{{ asset('storage/' . $barangs->image) }}" alt="{{ $barangs->image }}" class="img-fluid mt-3">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            @if ($barangs->image)
+            <div class="form-group">
+              <label for="foto_barang">Foto Barang</label>
+              <div style="max-height: 350px;">  
+                <img src="{{ asset('storage/' . $barangs->image) }}" alt="{{ $barangs->image }}" class="img-fluid mt-3" width="70%">
+              </div>
             </div>
+            @endif
           </div>
-          @endif
+        </div>
           <div class="row">
             <div class="col-md-12 d-flex justify-content-end">
               <a href="/barang" class="btn btn-outline-info">

@@ -85,12 +85,14 @@ class ProfileController extends Controller
     public function update(Request $request, user $user)
     {
         //
-        $request->validate([
-            'name',
-            'username',
-            'alamat',
-            'telepon'
-        ]);
+        dd($request);
+
+        // $request->validate([
+        //     'name',
+        //     'username',
+        //     'alamat',
+        //     'telepon'
+        // ]);
 
         $users = user::find($user->id);
         $users->name = $request->name;
@@ -99,7 +101,7 @@ class ProfileController extends Controller
         $users->alamat = $request->alamat;
         $users->update();
 
-        return redirect('/profile');
+        // return redirect('/profile');
     }
 
     /**

@@ -25,9 +25,20 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(history $history, lelang $lelang)
+    public function create(history $history, lelang $lelang, barang $barang)
     {
         //
+        $lelangs = lelang::find($lelang->id);
+        $histories = history::orderBy('harga_penawaran', 'desc')->get()->where('lelang_id', $lelang->id);
+        return view('lelang.penawaran', compact('lelangs', 'histories'));
+    }
+
+    public function historypenawaran(history $history, lelang $lelang)
+    {
+        // 
+        $lelangs = lelang::find($lelang->id);
+        $histories = history::orderBy('harga_penawaran', 'desc')->get()->where('lelang_id', $lelang->id);
+        return view('lelang.historylelang', compact('lelangs', 'histories'));
     }
 
     /**
@@ -39,6 +50,7 @@ class HistoryController extends Controller
     public function store(Request $request, history $history, lelang $lelang, barang $barang)
     {
         //
+        // dd($request);
         $validateData = $request->validate(
             [
                 'harga_penawaran' => 'required',
@@ -48,13 +60,14 @@ class HistoryController extends Controller
             ]
         );
 
-        $historie = new history();
-        $historie->lelang_id = $lelang->id;
-        $historie->users_id = auth::user()->id;
-        $historie->barang_id = $lelang->barang->id;
-        $historie->harga_penawaran = $request->harga_penawaran;
-        $historie->status = 'pending';
-        $historie->save();
+
+        $histories = new history();
+        $histories->lelangs_id = $lelang->id;
+        $histories->users_id = auth::user()->id;
+        $histories->barangs_id = $lelang->barang->id;
+        $histories->harga_penawaran = $request->harga_penawaran;
+        $histories->status = 'pending';
+        $histories->save();
 
         return redirect()->route('tawar', $lelang->id)->with('success', 'Penawaran Anda Tercatat')->with('ucapan');
     }

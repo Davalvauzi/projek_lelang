@@ -154,10 +154,12 @@ class usercontroller extends Controller
 
     public function editprofile(user $user, Request $request)
     {
-        // $request->validate([
-        //     'username' => 'required',
-        //     'level' => 'required'
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'telepon' => 'required',
+            'alamat' => 'required'
+        ]);
 
         $users = user::find($user->id);
         $users->name = $request->name;
@@ -166,6 +168,6 @@ class usercontroller extends Controller
         $users->alamat = $request->alamat;
         $users->update();
 
-        return redirect('/user');
+        return redirect('/profile');
     }
 }

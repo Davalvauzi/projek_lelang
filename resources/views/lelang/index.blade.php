@@ -12,11 +12,6 @@
       <a href="{{ route('lelang.create') }}" class="btn btn-primary">Tambah Lelang</a>
     </div>
   @endif
-  @if (auth()->user()->level == 'admin')
-    <div class="card-header d-flex justify-content-between mb-3">
-      <a href="{{ route('lelang.create') }}" class="btn btn-primary">Tambah Lelang</a>
-    </div>
-  @endif
     <!-- /.card-header -->
     <div class="card-body">
       <table id="example2" class="table table-bordered table-hover" class="datatable">
@@ -43,6 +38,7 @@
               </td>
               <td>
                   <a class="btn btn-primary mr-3" href="/lelang/{{ $lelang->id }}">Detail</a>
+                  <a class="btn btn-warning mr-3" href="{{ route('historypenawaran', $lelang->id) }}}}">Riwayat Penawaran</a>
                   @if (auth()->user()->level == 'masyarakat')
                   <a class="btn btn-warning mr-3" href="{{ route('tawar', $lelang->id) }}">Tawar</a>
                   @endif

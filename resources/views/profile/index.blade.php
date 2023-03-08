@@ -78,33 +78,33 @@
                 </div>
                 <!-- /.tab-pane -->
                 
-                {{-- <form action="{{ route('profile.update', [$users->id]) }}" method="POST">
-                  @csrf
-                  @method('PUT') --}}
                 <div class="tab-pane" id="settings">
-                  <form class="form-horizontal">
+                  <form action="{{ route('profile.update', auth::user()->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    {{-- <a href="{{ route('profile.update', auth::user()->id) }}">tes</a> --}}
                     <div class="form-group row">
                       <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                       <div class="col-sm-10">
-                        <input type="email" name="name" class="form-control" id="inputName" placeholder="Name">
+                        <input type="text" name="name" class="form-control" id="inputName" value="{{ auth::user()->name }}" placeholder="Name">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="username" class="col-sm-2 col-form-label">Username</label>
                       <div class="col-sm-10">
-                        <input type="email" name="username" class="form-control" id="username" placeholder="Username">
+                        <input type="text" name="username" class="form-control" id="username" value="{{ auth::user()->username }}" placeholder="Username">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="telepon" class="col-sm-2 col-form-label">No Telepon</label>
                       <div class="col-sm-10">
-                        <input type="email" name="telepon" class="form-control" id="telepon" placeholder="telepon">
+                        <input type="text" name="telepon" class="form-control" id="telepon" value=" {{ auth::user()->telepon }}" placeholder="telepon">
                       </div>
                     </div>
                       <div class="form-group row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat Kamu"></textarea>
+                          <input type="text" name="alamat" class="form-control" id="alamat" value=" {{ auth::user()->alamat }}" placeholder="telepon">
                         </div>
                       </div>
                     <div class="form-group row">
@@ -112,7 +112,6 @@
                         <button type="submit" class="btn btn-warning">Submit</button>
                       </div>
                     </div>
-                  </form> 
                 </div>
                 </form>
                 <!-- /.tab-pane -->

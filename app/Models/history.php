@@ -16,9 +16,8 @@ class history extends Model
     [
         'lelangs_id',
         'users_id',
-        'nama_barang',
-        'harga',
-        'tanggal',
+        'barangs_id',
+        'harga_penawaran',
         'status'
     ];
 
@@ -29,6 +28,12 @@ class history extends Model
 
     public function lelang()
     {
-        return $this->hasOne('App\models\lelang', 'id', 'lelang_id');
+        return $this->hasOne('App\models\lelang', 'id', 'lelangs_id', 'status');
+    }
+
+    public function barang()
+    {
+        return $this->hasOne('App\models\barang', 'id', 'barangs_id', 'status');
+        // return $this->belongsTo(Barang::class);
     }
 }
